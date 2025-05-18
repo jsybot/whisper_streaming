@@ -200,6 +200,14 @@ online.init()  # refresh if you're going to re-use the object for the next audio
 
 `whisper_online_server.py` has the same model options as `whisper_online.py`, plus `--host` and `--port` of the TCP connection and the `--warmup-file`. See the help message (`-h` option).
 
+Server example (using MLX on Apple Silicon):
+```bash
+# First, download a warmup file if you don't have one (optional but recommended)
+# curl -LJO https://github.com/ggerganov/whisper.cpp/raw/master/samples/jfk.wav
+
+python3 whisper_online_server.py --lan en --task transcribe --backend mlx-whisper --model base.en --warmup-file jfk.wav
+```
+
 Client example:
 
 ```
